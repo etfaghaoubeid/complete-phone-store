@@ -2,11 +2,12 @@ import { Product } from "../types";
 import { ProductDao } from "./dao/productDao";
 
 export class DataStore implements ProductDao {
-  getProductList(): { product: Product[] } {
-    return { product: this.products };
+  getProductList() {
+    return { products: this.products };
   }
   createProduct(product: Product): Product | undefined {
-    throw new Error("Method not implemented.");
+    this.products.push(product);
+    return product;
   }
   getProductById(productId: string): Product | undefined {
     throw new Error("Method not implemented.");
